@@ -44,6 +44,27 @@
   background-color: rgb(44, 62, 80);
 }
 
+.background--motorcycles{
+  background-image: url("../images/motorcycles.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.background--flugal{
+  background-image: url("../images/flugal.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.background--takalak{
+  background-image: url("../images/takalak.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
 /*
   General Styles
     These are styles to be inherited
@@ -55,7 +76,7 @@ html {
 }
 
 body {
-  font-family: 'Cardo', serif;
+  font-family: 'Open Sans Condensed', sans-serif;
   margin: 0;
 }
 
@@ -85,8 +106,8 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 4.2rem;
   min-height: 70vh;
   position: relative;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 3.2rem;
+  padding-bottom: 3.3rem;
 }
 
 .section--alignCentered {
@@ -94,15 +115,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section--description {
-  font-size: 2.8rem;
-  padding-left: 3.5rem;
-  padding-right: 3.5rem;
+  font-size: 2.7rem;
+  padding-left: 3.2rem;
+  padding-right: 3.2rem;
 }
 
 .section__description {
   margin: 0 auto;
   margin-bottom: 2rem;
-  width: 50%;
+  width: 80%;
 }
 
 .section__text--centered {
@@ -145,7 +166,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .section__exampleImage {
   opacity: 0.25;
-  width: 250%;
+  width: 150%;
   margin-left: -50%;
   margin-top: -50%;
 }
