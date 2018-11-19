@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>ReactJS Test</title>
-
+    <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css">
     <style media="screen">
       .messageBox {
         border: 1px solid;
@@ -25,12 +25,14 @@
   </head>
   <body>
     <main id="content">
-
     </main>
+    <div id="mocha"></div>
 
     <script src="https://unpkg.com/babel-standalone"></script>
     <script type="text/javascript" src="https://unpkg.com/react/umd/react.production.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/chai/chai.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/mocha/mocha.js"></script>
 
     <script type="text/babel">
 
@@ -76,8 +78,8 @@
           return (
             <div class="">
               <label>Name: <input ref="nameInput" type="text"/></label>
-              <button onClick={this.buttonClicked}>Click Me!</button>
-              <button onClick={this.buttonClear}>Clear</button>
+              <button id="inputButton" onClick={this.buttonClicked}>Click Me!</button>
+              <button id="clearButton" onClick={this.buttonClear}>Clear</button>
               <MessageBox type={msg.type} message={msg.body}/>
             </div>
           )
@@ -95,6 +97,53 @@
       }
 
       ReactDOM.render(<NameInput />, document.getElementById('content'));
+
+    </script>
+
+    <script type="text/babel">
+      const assert = chai.assert;
+
+      mocha.ui("bdd");
+      mocha.reporter("html");
+
+      describe("Example tests", () => {
+        it("Proved that math works", () => {
+          assert.equal(5, (3+2), "math works");
+          assert.notEqual(6, 3+2, "math still works");
+          assert.closeTo(Math.PI, 3, .2, "PI is close to 3");
+        });
+
+        it("Found our component", () => {
+          assert.isDefined(MessageBox, "Our MessageBox component is defined.");
+        });
+
+        it("Let us test a function", () => {
+          let myName = "Shig";
+          const greet = (name) => "Hello, " + name + "!";
+
+          assert.include(greet(myName), myName, "Greeting includes name");
+        });
+      });
+
+      describe("Document tests", () => {
+        it("Rendered an empty messageBox", () => {
+          let msgBox = document.querySelector(".messageBox");
+          assert.isDefined(msgBox, "Message box is in the document.");
+          assert.include(msgBox.classList.value, "hidden", "Message Box is hidden");
+          assert.equal(msgBox.innerText,"", "Message box is empty.");
+        });
+
+        it("Rendered an error when name is empty and cleared it when cleared", () => {
+          let msgBox = document.querySelector(".messageBox");
+          let inputButton = document.querySelector("#inputButton");
+          let clearButton = document.querySelector("#clearButton");
+          inputButton.click();
+          assert.include(msgBox.classList.value, "error", "Message box type is error");
+          clearButton.click();
+          assert.include(msgBox.classList.value, "hidden", "Message box type was cleared");
+        });
+      });
+      mocha.run();
 
     </script>
   </body>
