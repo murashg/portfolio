@@ -71,6 +71,9 @@
   background-image: url("../images/takalak.jpg");
 }
 
+.background--nightsky {
+  background-color: rgb(100,100,100);
+}
 /*
   General Styles
     These are styles to be inherited
