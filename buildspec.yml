@@ -1,4 +1,4 @@
-version: 0.1
+version: 0.2
 
 phases:
   build:
@@ -12,5 +12,6 @@ artifacts:
     - favicon.ico
     - styles/main.css
     - images/*
+    - images/favicon/*
     - js/*
     - dist/bundle.js
